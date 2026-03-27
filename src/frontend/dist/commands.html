@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Commands — Dracon</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+
+<nav id="navbar"></nav>
+
+<div class="page-header">
+  <div class="container">
+    <div class="section-label fade-in" style="margin:0 auto 16px"><span class="dot"></span>Bot commands</div>
+    <h1 class="page-header-title fade-in delay-1">All <span class="accent">75+</span> commands</h1>
+    <p class="page-header-sub fade-in delay-2">Use the default prefix <code style="background:rgba(255,255,255,0.06);padding:2px 7px;border-radius:5px;font-size:0.85em">&amp;</code> for all commands. Search or filter by category below.</p>
+
+    <div class="commands-search fade-in delay-3">
+      <span class="search-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </span>
+      <input type="text" id="cmdSearch" placeholder="Search commands..." />
+    </div>
+
+    <div class="cmd-categories fade-in delay-4">
+      <button class="cmd-cat-btn active" data-cat="all">All</button>
+      <button class="cmd-cat-btn" data-cat="moderation">Moderation</button>
+      <button class="cmd-cat-btn" data-cat="purge">Purge</button>
+      <button class="cmd-cat-btn" data-cat="security">Security</button>
+      <button class="cmd-cat-btn" data-cat="utility">Utility</button>
+      <button class="cmd-cat-btn" data-cat="tickets">Tickets</button>
+      <button class="cmd-cat-btn" data-cat="welcome">Welcome</button>
+      <button class="cmd-cat-btn" data-cat="jtc">Join to Create</button>
+      <button class="cmd-cat-btn" data-cat="reactionroles">Reaction Roles</button>
+    </div>
+  </div>
+</div>
+
+<div class="section" style="padding-top:0">
+  <div class="container">
+
+    <!-- MODERATION -->
+    <div class="commands-table fade-in" data-cat="moderation">
+      <div class="cmd-category-header">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/></svg>
+        Moderation
+      </div>
+      <div class="cmd-section-label">Banning</div>
+      <div class="cmd-row"><span class="cmd-name">&amp;ban &lt;@user&gt; &lt;reason&gt;</span><span class="cmd-desc">Ban a user from the server.</span><span class="cmd-badge">mod</span></div>
+      <div class="cmd-row"><span class="cmd-name">&amp;unban &lt;@user&gt; &lt;reason&gt;</span><span class="cmd-desc">Unban a user.</span><span class="cmd-badge">mod</span></div>
+      <div class="cmd-row"><span class="cmd-name">&amp;tempban &lt;@user&gt; &lt;time&gt; &lt;reason&gt;</span><span class="cmd-desc">Temporarily ban a user.</span><span class="cmd-badge">mod</span></div>
+      <div class="cmd-row"><span class="cmd-name">&amp;softban &lt;@user&gt; &lt;reason&gt;</span><span class="cmd-desc">Ban and immediately unban to purge messages.</span><span class="cmd-badge">mod</span></div>
+      <div class="cmd-row"><span class="cmd-name">&amp;massban &lt;@user1&gt; &lt;@user2&gt; &lt;reason&gt;</span><span class="cmd-desc">Ban multiple users at once.</span><span class="cmd-badge">mod</span></div>
+      <div class="cmd-row"><span class="cmd-name">&amp;hackban &lt;user_id&gt; &lt;reason&gt;</span><span class="cmd-desc">Ban a user who is not in the server.</span><span class="cmd-badge">mod</span></div>
+      <div class="cmd-section-label">Muting &amp; Timeout</div>
+      <div class="cmd-row"><span class="cmd-name">&amp;mute &lt;@user&gt; &lt;reason&gt;</span><span class="cmd-desc">Mute a user.</span><span class="cmd-badge">mod</span></div>
+      <div class="cmd-row"><span class="cmd-name">&amp;unmute &lt;@user&gt; &lt;reason&gt;</span><span class="cmd-desc">Unmute a user.</span><span class="cmd-badge">mod</span></div>
+      <div class="cmd-row"><span class="cmd-name">&amp;timeout &lt;@user&gt; &lt;time&gt; &lt;reason&gt;</span><span class="cmd-desc">Timeout a user.</span><span class="cmd-badge">mod</span></div>
+      <div class="cmd-row"><span class="cmd-name">&amp;untimeout &lt;@user&gt; &lt;reason&gt;</span><span class="cmd-desc">Remove a user's timeout.</span><span class="cmd-badge">mod</span></div>
+      <div class="cmd-row"><span class="cmd-name">&amp;jail &lt;@user&gt; &lt;reason&gt;</span><span class="cmd-desc">Jail a user.</span><span class="cmd-badge">mod</span></div>
+      <div class="cmd-row"><span class="cmd-name">&amp;unjail &lt;@user&gt; &lt;reason&gt;</span><span class="cmd-desc">Unjail a user.</span><span class="cmd-badge">mod</span></div>
+      <div class="cmd-section-label">Kicking</div>
+      <div class="cmd-row"><span class="cmd-name">&amp;kick &lt;@user&gt; &lt;reason&gt;</span><span class="cmd-desc">Kick a user from the server.</span><span class="cmd-badge">mod</span></div>
+      <div class="cmd-section-label">Warnings</div>
+      <div class="cmd-row"><span class="cmd-name">&amp;warn &lt;@user&gt; &lt;reason&gt;</span><span class="cmd-desc">Warn a user.</span><span class="cmd-badge">mod</span></div>
+      <div class="cmd-row"><span class="cmd-name">&amp;warnings &lt;@user&gt;</span><span class="cmd-desc">View a user's warnings.</span><span class="cmd-badge">mod</span></div>
+      <div class="cmd-row"><span class="cmd-name">&amp;removewarn &lt;id&gt;</span><span class="cmd-desc">Remove a specific warning.</span><span class="cmd-badge">mod</span></div>
+      <div class="cmd-row"><span class="cmd-name">&amp;clearwarns &lt;@user&gt;</span><span class="cmd-desc">Clear all warnings from a user.</span><span class="cmd-badge">mod</span></div>
+      <div class="cmd-row"><span class="cmd-name">&amp;autopunish</span><span class="cmd-desc">View autopunish settings.</span><span class="cmd-badge">admin</span></div>
+      <div class="cmd-row"><span class="cmd-name">&amp;autopunish on/off</span><span class="cmd-desc">Enable or disable automatic punishments.</span><span class="cmd-badge">admin</span></div>
+      <div class="cmd-row"><span class="cmd-name">&amp;setwarnlimit &lt;number&gt;</span><span class="cmd-desc">Set warning limit before punishment.</span><span class="cmd-badge">admin</span></div>
+      <div class="cmd-section-label">Channel Management</div>
+      <div class="cmd-row"><span class="cmd-name">&amp;lock &lt;#channel&gt;</span><span class="cmd-desc">Lock a channel.</span><span class="cmd-badge">mod</span></div>
+      <div class="cmd-row"><span class="cmd-name">&amp;unlock &lt;#channel&gt;</span><span class="cmd-desc">Unlock a channel.</span><span class="cmd-badge">mod</span></div>
+      <div class="cmd-row"><span class="cmd-name">&amp;lockall</span><span class="cmd-desc">Lock all channels in the server.</span><span class="cmd-badge">mod</span></div>
+      <div class="cmd-row"><span class="cmd-name">&amp;unlockall</span><span class="cmd-desc">Unlock all channels in the server.</span><span class="cmd-badge">mod</span></div>
+      <div class="cmd-row"><span class="cmd-name">&amp;nuke &lt;#channel&gt;</span><span class="cmd-desc">Delete all messages in a channel.</span><span class="cmd-badge">mod</span></div>
+      <div class="cmd-row"><span class="cmd-name">&amp;hide &lt;#channel&gt;</span><span class="cmd-desc">Hide a channel.</span><span class="cmd-badge">mod</span></div>
+      <div class="cmd-row"><span class="cmd-name">&amp;unhide &lt;#channel&gt;</span><span class="cmd-desc">Unhide a channel.</span><span class="cmd-badge">mod</span></div>
+      <div class="cmd-row"><span class="cmd-name">&amp;hidden</span><span class="cmd-desc">View all hidden channels.</span><span class="cmd-badge">mod</span></div>
+      <div class="cmd-row"><span class="cmd-name">&amp;slowmode &lt;time&gt; &lt;#channel&gt;</span><span class="cmd-desc">Set slowmode for a channel.</span><span class="cmd-badge">mod</span></div>
+      <div class="cmd-section-label">Role Management</div>
+      <div class="cmd-row"><span class="cmd-name">&amp;role &lt;@user&gt; &lt;@role&gt;</span><span class="cmd-desc">Assign a role to a user.</span><span class="cmd-badge">mod</span></div>
+      <div class="cmd-row"><span class="cmd-name">&amp;roleall &lt;@role&gt; &lt;reason&gt;</span><span class="cmd-desc">Assign a role to all members.</span><span class="cmd-badge">admin</span></div>
+      <div class="cmd-row"><span class="cmd-name">&amp;roleremoveall &lt;@role&gt; &lt;reason&gt;</span><span class="cmd-desc">Remove a role from all members.</span><span class="cmd-badge">admin</span></div>
+    </div>
+
+    <!-- PURGE -->
+    <div class="commands-table fade-in delay-1" data-cat="purge">
+      <div class="cmd-category-header">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/><path d="M9 6V4h6v2"/></svg>
+        Purge
+      </div>
+      <div class="cmd-row"><span class="cmd-name">&amp;purge &lt;amount&gt;</span><span class="cmd-desc">Delete a specific number of messages.</span><span class="cmd-badge">mod</span></div>
+      <div class="cmd-row"><span class="cmd-name">&amp;purge &lt;@user&gt; &lt;amount&gt;</span><span class="cmd-desc">Delete messages from a specific user.</span><span class="cmd-badge">mod</span></div>
+      <div class="cmd-row"><span class="cmd-name">&amp;purge bots</span><span class="cmd-desc">Delete all bot messages.</span><span class="cmd-badge">mod</span></div>
+      <div class="cmd-row"><span class="cmd-name">&amp;purge user</span><span class="cmd-desc">Delete messages from a user (interactive).</span><span class="cmd-badge">mod</span></div>
+      <div class="cmd-row"><span class="cmd-name">&amp;purge attachments</span><span class="cmd-desc">Delete all messages with attachments.</span><span class="cmd-badge">mod</span></div>
+      <div class="cmd-row"><span class="cmd-name">&amp;purge all</span><span class="cmd-desc">Delete all messages in the channel.</span><span class="cmd-badge">mod</span></div>
+      <div class="cmd-row"><span class="cmd-name">&amp;purge &lt;@user1&gt; between &lt;@user2&gt;</span><span class="cmd-desc">Delete messages between two users.</span><span class="cmd-badge">mod</span></div>
+      <div class="cmd-row"><span class="cmd-name">&amp;purge &lt;@user1&gt; after &lt;@user2&gt;</span><span class="cmd-desc">Delete messages from one user after another user's message.</span><span class="cmd-badge">mod</span></div>
+    </div>
+
+    <!-- SECURITY -->
+    <div class="commands-table fade-in delay-1" data-cat="security">
+      <div class="cmd-category-header">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Security
+      </div>
+      <div class="cmd-section-label">Core</div>
+      <div class="cmd-row"><span class="cmd-name">&amp;antinuke</span><span class="cmd-desc">View antinuke status.</span><span class="cmd-badge premium">premium</span></div>
+      <div class="cmd-row"><span class="cmd-name">&amp;antinuke enable</span><span class="cmd-desc">Activate the security system.</span><span class="cmd-badge premium">premium</span></div>
+      <div class="cmd-row"><span class="cmd-name">&amp;antinuke disable</span><span class="cmd-desc">Deactivate the security system.</span><span class="cmd-badge premium">premium</span></div>
+      <div class="cmd-row"><span class="cmd-name">&amp;antinuke config</span><span class="cmd-desc">View and adjust current security settings.</span><span class="cmd-badge premium">premium</span></div>
+      <div class="cmd-row"><span class="cmd-name">&amp;antinuke logs &lt;#channel&gt;</span><span class="cmd-desc">Set the channel for antinuke alerts and logs.</span><span class="cmd-badge premium">premium</span></div>
+      <div class="cmd-section-label">Extra Owner</div>
+      <div class="cmd-row"><span class="cmd-name">&amp;extraowner add &lt;@user&gt;</span><span class="cmd-desc">Add an extra owner to manage antinuke.</span><span class="cmd-badge">owner</span></div>
+      <div class="cmd-row"><span class="cmd-name">&amp;extraowner remove &lt;@user&gt;</span><span class="cmd-desc">Remove an extra owner.</span><span class="cmd-badge">owner</span></div>
+      <div class="cmd-section-label">Admin</div>
+      <div class="cmd-row"><span class="cmd-name">&amp;admin add &lt;@user&gt;</span><span class="cmd-desc">Add an admin to the antinuke system.</span><span class="cmd-badge premium">premium</span></div>
+      <div class="cmd-row"><span class="cmd-name">&amp;admin remove &lt;@user&gt;</span><span class="cmd-desc">Remove an admin.</span><span class="cmd-badge premium">premium</span></div>
+      <div class="cmd-row"><span class="cmd-name">&amp;admin list</span><span class="cmd-desc">View all antinuke admins.</span><span class="cmd-badge premium">premium</span></div>
+      <div class="cmd-section-label">Whitelist</div>
+      <div class="cmd-row"><span class="cmd-name">&amp;wl add &lt;@user&gt;</span><span class="cmd-desc">Whitelist a user to bypass security restrictions.</span><span class="cmd-badge premium">premium</span></div>
+      <div class="cmd-row"><span class="cmd-name">&amp;wl remove &lt;@user&gt;</span><span class="cmd-desc">Remove a user from the whitelist.</span><span class="cmd-badge premium">premium</span></div>
+      <div class="cmd-row"><span class="cmd-name">&amp;wl list</span><span class="cmd-desc">View all whitelisted users.</span><span class="cmd-badge premium">premium</span></div>
+    </div>
+
+    <!-- UTILITY -->
+    <div class="commands-table fade-in delay-2" data-cat="utility">
+      <div class="cmd-category-header">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93A10 10 0 0 0 5 5.07M5 19l14-14"/></svg>
+        Utility
+      </div>
+      <div class="cmd-section-label">Bot</div>
+      <div class="cmd-row"><span class="cmd-name">&amp;botinfo</span><span class="cmd-desc">View bot statistics and system status.</span><span class="cmd-badge">all</span></div>
+      <div class="cmd-row"><span class="cmd-name">&amp;ping</span><span class="cmd-desc">Check the bot's current latency.</span><span class="cmd-badge">all</span></div>
+      <div class="cmd-section-label">Server</div>
+      <div class="cmd-row"><span class="cmd-name">&amp;serverinfo</span><span class="cmd-desc">View detailed server information.</span><span class="cmd-badge">all</span></div>
+      <div class="cmd-row"><span class="cmd-name">&amp;servericon</span><span class="cmd-desc">Display the server's icon.</span><span class="cmd-badge">all</span></div>
+      <div class="cmd-row"><span class="cmd-name">&amp;serverbanner</span><span class="cmd-desc">Display the server's banner.</span><span class="cmd-badge">all</span></div>
+      <div class="cmd-row"><span class="cmd-name">&amp;boosts</span><span class="cmd-desc">View server boost information.</span><span class="cmd-badge">all</span></div>
+      <div class="cmd-row"><span class="cmd-name">&amp;membercount</span><span class="cmd-desc">Check total member count.</span><span class="cmd-badge">all</span></div>
+      <div class="cmd-row"><span class="cmd-name">&amp;statistics</span><span class="cmd-desc">View server statistics.</span><span class="cmd-badge">all</span></div>
+      <div class="cmd-row"><span class="cmd-name">&amp;roles</span><span class="cmd-desc">List all roles in the server.</span><span class="cmd-badge">all</span></div>
+      <div class="cmd-section-label">User</div>
+      <div class="cmd-row"><span class="cmd-name">&amp;userinfo &lt;@user&gt;</span><span class="cmd-desc">View detailed information about a user.</span><span class="cmd-badge">all</span></div>
+      <div class="cmd-row"><span class="cmd-name">&amp;avatar &lt;@user&gt;</span><span class="cmd-desc">Display a user's avatar.</span><span class="cmd-badge">all</span></div>
+      <div class="cmd-row"><span class="cmd-name">&amp;banner &lt;@user&gt;</span><span class="cmd-desc">Display a user's banner.</span><span class="cmd-badge">all</span></div>
+      <div class="cmd-row"><span class="cmd-name">&amp;roleinfo &lt;@role&gt;</span><span class="cmd-desc">View detailed information about a role.</span><span class="cmd-badge">all</span></div>
+      <div class="cmd-section-label">AFK</div>
+      <div class="cmd-row"><span class="cmd-name">&amp;afk &lt;reason&gt;</span><span class="cmd-desc">Set your AFK status with a reason.</span><span class="cmd-badge">all</span></div>
+    </div>
+
+    <!-- TICKETS -->
+    <div class="commands-table fade-in delay-1" data-cat="tickets">
+      <div class="cmd-category-header">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.62 3.31 2 2 0 0 1 3.6 1.11h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.7a16 16 0 0 0 6 6l.96-.96a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 21.73 16z"/></svg>
+        Tickets
+      </div>
+      <div class="cmd-section-label">Setup</div>
+      <div class="cmd-row"><span class="cmd-name">&amp;ticket setup</span><span class="cmd-desc">Begin the ticket system setup.</span><span class="cmd-badge">admin</span></div>
+      <div class="cmd-row"><span class="cmd-name">&amp;ticket category &lt;#category&gt;</span><span class="cmd-desc">Set the category for ticket channels.</span><span class="cmd-badge">admin</span></div>
+      <div class="cmd-row"><span class="cmd-name">&amp;ticket role &lt;@role&gt;</span><span class="cmd-desc">Set which role can manage tickets.</span><span class="cmd-badge">admin</span></div>
+      <div class="cmd-row"><span class="cmd-name">&amp;ticket logs &lt;#channel&gt;</span><span class="cmd-desc">Set the channel for ticket transcripts.</span><span class="cmd-badge">admin</span></div>
+      <div class="cmd-row"><span class="cmd-name">&amp;ticket panel</span><span class="cmd-desc">Create the ticket panel for users.</span><span class="cmd-badge">admin</span></div>
+      <div class="cmd-section-label">User</div>
+      <div class="cmd-row"><span class="cmd-name">&amp;ticket open</span><span class="cmd-desc">Open a new ticket.</span><span class="cmd-badge">all</span></div>
+      <div class="cmd-row"><span class="cmd-name">&amp;ticket close &nbsp;<code style="font-size:0.78em;opacity:0.6">&amp;tc</code></span><span class="cmd-desc">Close the current ticket.</span><span class="cmd-badge">all</span></div>
+      <div class="cmd-row"><span class="cmd-name">&amp;ticket add &lt;@user&gt;</span><span class="cmd-desc">Add a user to the ticket.</span><span class="cmd-badge">mod</span></div>
+      <div class="cmd-row"><span class="cmd-name">&amp;ticket remove &lt;@user&gt;</span><span class="cmd-desc">Remove a user from the ticket.</span><span class="cmd-badge">mod</span></div>
+      <div class="cmd-section-label">Staff</div>
+      <div class="cmd-row"><span class="cmd-name">&amp;ticket claim &nbsp;<code style="font-size:0.78em;opacity:0.6">&amp;tcm</code></span><span class="cmd-desc">Claim a ticket to show you're handling it.</span><span class="cmd-badge">mod</span></div>
+      <div class="cmd-row"><span class="cmd-name">&amp;ticket transcript &nbsp;<code style="font-size:0.78em;opacity:0.6">&amp;tt</code></span><span class="cmd-desc">Get a transcript of the current ticket.</span><span class="cmd-badge">mod</span></div>
+      <div class="cmd-row"><span class="cmd-name">&amp;ticket rename &lt;name&gt;</span><span class="cmd-desc">Rename the ticket channel.</span><span class="cmd-badge">mod</span></div>
+      <div class="cmd-row"><span class="cmd-name">&amp;ticket blacklist &lt;@user&gt;</span><span class="cmd-desc">Prevent a user from opening tickets.</span><span class="cmd-badge">mod</span></div>
+      <div class="cmd-row"><span class="cmd-name">&amp;ticket stats</span><span class="cmd-desc">View ticket system statistics.</span><span class="cmd-badge">mod</span></div>
+      <div class="cmd-section-label">Config</div>
+      <div class="cmd-row"><span class="cmd-name">&amp;ticket mention &lt;@role&gt;</span><span class="cmd-desc">Set which role gets mentioned when tickets open.</span><span class="cmd-badge">admin</span></div>
+      <div class="cmd-row"><span class="cmd-name">&amp;ticket mention enable</span><span class="cmd-desc">Enable role mentions for new tickets.</span><span class="cmd-badge">admin</span></div>
+      <div class="cmd-row"><span class="cmd-name">&amp;ticket mention disable</span><span class="cmd-desc">Disable role mentions for new tickets.</span><span class="cmd-badge">admin</span></div>
+      <div class="cmd-row"><span class="cmd-name">&amp;ticket manager</span><span class="cmd-desc">Open the ticket management dashboard.</span><span class="cmd-badge">admin</span></div>
+    </div>
+
+    <!-- WELCOME -->
+    <div class="commands-table fade-in delay-2" data-cat="welcome">
+      <div class="cmd-category-header">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>
+        Welcome
+      </div>
+      <div class="cmd-row"><span class="cmd-name">&amp;welcome enable</span><span class="cmd-desc">Activate the welcome system.</span><span class="cmd-badge">admin</span></div>
+      <div class="cmd-row"><span class="cmd-name">&amp;welcome disable</span><span class="cmd-desc">Deactivate the welcome system.</span><span class="cmd-badge">admin</span></div>
+      <div class="cmd-row"><span class="cmd-name">&amp;welcome setup</span><span class="cmd-desc">Start the setup process for welcome messages.</span><span class="cmd-badge">admin</span></div>
+      <div class="cmd-row"><span class="cmd-name">&amp;welcome config</span><span class="cmd-desc">View current welcome configuration.</span><span class="cmd-badge">admin</span></div>
+      <div class="cmd-row"><span class="cmd-name">&amp;welcome test</span><span class="cmd-desc">Test your welcome message.</span><span class="cmd-badge">admin</span></div>
+      <div class="cmd-row"><span class="cmd-name">&amp;welcome reset</span><span class="cmd-desc">Reset all welcome settings.</span><span class="cmd-badge">admin</span></div>
+    </div>
+
+    <!-- JOIN TO CREATE -->
+    <div class="commands-table fade-in delay-1" data-cat="jtc">
+      <div class="cmd-category-header">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 17H2a3 3 0 0 0 3-3V9a7 7 0 0 1 14 0v5a3 3 0 0 0 3 3z"/><line x1="12" y1="22" x2="12" y2="17"/></svg>
+        Join to Create
+      </div>
+      <div class="cmd-row"><span class="cmd-name">&amp;jtc setup</span><span class="cmd-desc">Start the setup process to configure join to create.</span><span class="cmd-badge">admin</span></div>
+      <div class="cmd-row"><span class="cmd-name">&amp;jtc reset</span><span class="cmd-desc">Reset all join to create settings.</span><span class="cmd-badge">admin</span></div>
+      <div class="cmd-row"><span class="cmd-name">&amp;jtc info</span><span class="cmd-desc">View current join to create configuration.</span><span class="cmd-badge">admin</span></div>
+      <div class="cmd-row"><span class="cmd-name">&amp;jtc help</span><span class="cmd-desc">View help information for join to create.</span><span class="cmd-badge">all</span></div>
+    </div>
+
+    <!-- REACTION ROLES -->
+    <div class="commands-table fade-in delay-2" data-cat="reactionroles">
+      <div class="cmd-category-header">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+        Reaction Roles
+      </div>
+      <div class="cmd-section-label">Setup</div>
+      <div class="cmd-row"><span class="cmd-name">&amp;rr setup</span><span class="cmd-desc">Begin the setup process for a new reaction role panel.</span><span class="cmd-badge">admin</span></div>
+      <div class="cmd-row"><span class="cmd-name">&amp;rr edit &lt;message_id&gt;</span><span class="cmd-desc">Edit an existing reaction role panel.</span><span class="cmd-badge">admin</span></div>
+      <div class="cmd-row"><span class="cmd-name">&amp;rr delete &lt;message_id&gt;</span><span class="cmd-desc">Delete a reaction role panel.</span><span class="cmd-badge">admin</span></div>
+      <div class="cmd-row"><span class="cmd-name">&amp;rr addrole &lt;message_id&gt; &lt;@role&gt; [label] [emoji] [style]</span><span class="cmd-desc">Add a role to an existing panel.</span><span class="cmd-badge">admin</span></div>
+      <div class="cmd-row"><span class="cmd-name">&amp;rr removerole &lt;message_id&gt; &lt;@role&gt;</span><span class="cmd-desc">Remove a role from a panel.</span><span class="cmd-badge">admin</span></div>
+      <div class="cmd-row"><span class="cmd-name">&amp;rr mode &lt;message_id&gt; &lt;normal|single|verify&gt;</span><span class="cmd-desc">Change the mode of a panel.</span><span class="cmd-badge">admin</span></div>
+      <div class="cmd-row"><span class="cmd-name">&amp;rr display &lt;message_id&gt; &lt;buttons|dropdown&gt;</span><span class="cmd-desc">Change how roles are displayed.</span><span class="cmd-badge">admin</span></div>
+      <div class="cmd-section-label">Info</div>
+      <div class="cmd-row"><span class="cmd-name">&amp;rr list</span><span class="cmd-desc">View all active reaction role panels.</span><span class="cmd-badge">admin</span></div>
+      <div class="cmd-row"><span class="cmd-name">&amp;rr info &lt;message_id&gt;</span><span class="cmd-desc">View detailed information about a specific panel.</span><span class="cmd-badge">admin</span></div>
+    </div>
+
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-bottom" style="border-top:none;padding-top:0">
+        <p class="footer-copy">Built with <span class="heart" style="display:inline-block;color:var(--accent)">&hearts;</span> by the Dracon team &mdash; &copy; 2024 Dracon.</p>
+        <div style="display:flex;gap:16px;flex-wrap:wrap">
+          <a href="/" style="font-size:0.8rem;color:var(--text-subtle);transition:color 0.2s" onmouseover="this.style.color='var(--text)'" onmouseout="this.style.color='var(--text-subtle)'">Home</a>
+          <a href="/privacy.html" style="font-size:0.8rem;color:var(--text-subtle);transition:color 0.2s" onmouseover="this.style.color='var(--text)'" onmouseout="this.style.color='var(--text-subtle)'">Privacy</a>
+          <a href="/terms.html" style="font-size:0.8rem;color:var(--text-subtle);transition:color 0.2s" onmouseover="this.style.color='var(--text)'" onmouseout="this.style.color='var(--text-subtle)'">Terms</a>
+          <a href="/support.html" style="font-size:0.8rem;color:var(--text-subtle);transition:color 0.2s" onmouseover="this.style.color='var(--text)'" onmouseout="this.style.color='var(--text-subtle)'">Support</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="/script.js"></script>
+<style>
+  .cmd-section-label {
+    padding: 8px 20px 4px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-subtle);
+    opacity: 0.6;
+  }
+</style>
+</body>
+</html>
