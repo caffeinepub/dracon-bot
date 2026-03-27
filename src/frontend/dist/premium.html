@@ -7,6 +7,115 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="/style.css" />
+  <style>
+    .prebuy-banner {
+      background: linear-gradient(135deg, rgba(var(--accent-rgb),0.12), rgba(var(--accent-rgb),0.04));
+      border: 1px solid rgba(var(--accent-rgb),0.35);
+      border-radius: 16px;
+      padding: 22px 32px;
+      margin: 0 auto 52px;
+      max-width: 720px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .prebuy-banner::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% -20%, rgba(var(--accent-rgb),0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .prebuy-banner .banner-icon {
+      font-size: 1.6rem;
+      margin-bottom: 10px;
+    }
+    .prebuy-banner h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text);
+      margin: 0 0 8px;
+    }
+    .prebuy-banner p {
+      font-size: 0.88rem;
+      color: var(--text-subtle);
+      margin: 0;
+      line-height: 1.6;
+    }
+    .prebuy-banner .accent { color: var(--accent); }
+    .prebuy-badge {
+      display: inline-block;
+      background: rgba(var(--accent-rgb),0.18);
+      color: var(--accent);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 20px;
+      border: 1px solid rgba(var(--accent-rgb),0.3);
+      margin-bottom: 14px;
+    }
+
+    /* Tier toggle */
+    .billing-toggle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.09);
+      border-radius: 12px;
+      padding: 4px;
+      width: fit-content;
+      margin: 0 auto 48px;
+    }
+    .billing-toggle button {
+      background: none;
+      border: none;
+      color: var(--text-subtle);
+      font-family: inherit;
+      font-size: 0.82rem;
+      font-weight: 600;
+      padding: 8px 20px;
+      border-radius: 9px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .billing-toggle button.active {
+      background: rgba(var(--accent-rgb),0.18);
+      color: var(--accent);
+    }
+
+    /* Pricing cards override for 3-col */
+    .pricing-grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 0;
+      text-align: left;
+    }
+    @media (max-width: 900px) {
+      .pricing-grid-3 { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; }
+    }
+
+    .tier-price { display: none; }
+    .tier-price.active { display: flex; }
+
+    .savings-badge {
+      display: inline-block;
+      background: rgba(var(--accent-rgb),0.15);
+      color: var(--accent);
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 3px 9px;
+      border-radius: 20px;
+      margin-left: 8px;
+      vertical-align: middle;
+    }
+  </style>
 </head>
 <body>
 
@@ -15,108 +124,133 @@
 <div class="premium-hero">
   <div class="container" style="position:relative;z-index:1;text-align:center">
     <div class="section-label fade-in" style="margin:0 auto 18px"><span class="dot"></span>Premium</div>
-    <h1 class="page-header-title fade-in delay-1" style="font-size:3.6rem">Unlock the full power<br>of <span class="accent">Dracon</span></h1>
-    <p class="page-header-sub fade-in delay-2" style="margin:0 auto">Advanced protection, unlimited features, and priority support. Start for free, upgrade when you're ready.</p>
+    <h1 class="page-header-title fade-in delay-1" style="font-size:3.2rem">Upgrade your server<br>with <span class="accent">Dracon Premium</span></h1>
+    <p class="page-header-sub fade-in delay-2" style="margin:0 auto 40px">Choose the plan that fits your community. All plans include no-prefix access for as long as your premium lasts.</p>
 
-    <div class="pricing-grid" style="margin-top:52px;text-align:left">
+    <!-- Pre-buy notice -->
+    <div class="prebuy-banner fade-in delay-2">
+      <div class="prebuy-badge">Coming soon</div>
+      <h3>Premium is not available yet</h3>
+      <p>We're still working on it, but you can <span class="accent">pre-buy your plan now</span> and we'll activate it for you the moment it launches. Pre-buyers get guaranteed access at today's prices. Join our <a href="/support.html" style="color:var(--accent);text-decoration:none">support server</a> to pre-purchase or ask questions.</p>
+    </div>
 
+    <!-- Billing toggle -->
+    <div class="billing-toggle fade-in">
+      <button class="active" onclick="setBilling('monthly',this)">1 month</button>
+      <button onclick="setBilling('quarterly',this)">3 months <span class="savings-badge">save more</span></button>
+      <button onclick="setBilling('lifetime',this)">Lifetime</button>
+    </div>
+
+    <!-- Pricing cards -->
+    <div class="pricing-grid-3">
+
+      <!-- Basic -->
       <div class="pricing-card fade-in delay-1">
         <div>
-          <div class="pricing-tier">Starter</div>
-          <div class="pricing-name">Free</div>
-          <div class="pricing-desc">Perfect for small and personal servers.</div>
+          <div class="pricing-tier">Tier 1</div>
+          <div class="pricing-name">Basic</div>
+          <div class="pricing-desc">Core premium perks for personal use and small servers.</div>
         </div>
-        <div class="pricing-price">
-          <span class="price-amount">$0</span>
-          <span class="price-period">/mo</span>
+        <div class="pricing-price tier-price active" data-period="monthly">
+          <span class="price-amount">$0.99</span>
+          <span class="price-period">/month</span>
+        </div>
+        <div class="pricing-price tier-price" data-period="quarterly">
+          <span class="price-amount">$2.15</span>
+          <span class="price-period">/3 months</span>
+        </div>
+        <div class="pricing-price tier-price" data-period="lifetime">
+          <span class="price-amount">$8.49</span>
+          <span class="price-period">lifetime</span>
         </div>
         <div class="pricing-divider"></div>
         <ul class="pricing-features">
-          <li><span class="check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Basic moderation (ban, kick, warn)</li>
-          <li><span class="check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Welcome &amp; goodbye messages</li>
-          <li><span class="check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Reaction roles (up to 5)</li>
-          <li><span class="check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>1 ticket panel</li>
-          <li><span class="check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Basic utility commands</li>
-          <li class="muted"><span class="check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span>Antinuke</li>
-          <li class="muted"><span class="check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span>Automod &amp; anti-raid</li>
-          <li class="muted"><span class="check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span>Priority support</li>
+          <li><span class="check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Invite tracker &amp; message counter</li>
+          <li><span class="check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Premium on up to 2 servers</li>
+          <li><span class="check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>No-prefix commands</li>
         </ul>
-        <a href="https://discord.com/oauth2/authorize?client_id=YOUR_BOT_ID&scope=bot&permissions=8" class="btn btn-ghost" style="text-align:center;justify-content:center" target="_blank" rel="noopener">Get started free</a>
+        <a href="/support.html" class="btn btn-ghost" style="text-align:center;justify-content:center">Pre-buy Basic</a>
       </div>
 
+      <!-- Pro -->
       <div class="pricing-card featured fade-in delay-2">
         <span class="pricing-badge">Most popular</span>
         <div>
-          <div class="pricing-tier">Pro</div>
-          <div class="pricing-name">Premium</div>
-          <div class="pricing-desc">For active and growing communities.</div>
+          <div class="pricing-tier">Tier 2</div>
+          <div class="pricing-name">Pro</div>
+          <div class="pricing-desc">More features and broader server coverage.</div>
         </div>
-        <div class="pricing-price">
-          <span class="price-amount">$4.99</span>
-          <span class="price-period">/mo</span>
+        <div class="pricing-price tier-price active" data-period="monthly">
+          <span class="price-amount">$1.55</span>
+          <span class="price-period">/month</span>
+        </div>
+        <div class="pricing-price tier-price" data-period="quarterly">
+          <span class="price-amount">$3.99</span>
+          <span class="price-period">/3 months</span>
+        </div>
+        <div class="pricing-price tier-price" data-period="lifetime">
+          <span class="price-amount">$14.49</span>
+          <span class="price-period">lifetime</span>
         </div>
         <div class="pricing-divider"></div>
         <ul class="pricing-features">
-          <li><span class="check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Everything in Free</li>
-          <li><span class="check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Antinuke &amp; mass action detection</li>
-          <li><span class="check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Automod (spam, links, mentions)</li>
-          <li><span class="check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Anti-raid protection</li>
-          <li><span class="check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Unlimited reaction roles</li>
-          <li><span class="check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Multiple ticket panels</li>
-          <li><span class="check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Verification system</li>
-          <li><span class="check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Priority support (24h response)</li>
+          <li><span class="check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Everything in Basic</li>
+          <li><span class="check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Logging &amp; AutoRoles</li>
+          <li><span class="check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Premium on up to 4 servers</li>
+          <li><span class="check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>No-prefix commands</li>
         </ul>
-        <a href="https://discord.gg/your-server" class="btn btn-primary" style="text-align:center;justify-content:center" target="_blank" rel="noopener">Get Premium</a>
+        <a href="/support.html" class="btn btn-primary" style="text-align:center;justify-content:center">Pre-buy Pro</a>
       </div>
 
+      <!-- Ultimate -->
       <div class="pricing-card fade-in delay-3">
         <div>
-          <div class="pricing-tier">Enterprise</div>
-          <div class="pricing-name">Business</div>
-          <div class="pricing-desc">For large networks and enterprises.</div>
+          <div class="pricing-tier">Tier 3</div>
+          <div class="pricing-name">Ultimate</div>
+          <div class="pricing-desc">Full access, max servers, and every feature unlocked.</div>
         </div>
-        <div class="pricing-price">
-          <span class="price-amount">$14.99</span>
-          <span class="price-period">/mo</span>
+        <div class="pricing-price tier-price active" data-period="monthly">
+          <span class="price-amount">$2.99</span>
+          <span class="price-period">/month</span>
+        </div>
+        <div class="pricing-price tier-price" data-period="quarterly">
+          <span class="price-amount">$7.99</span>
+          <span class="price-period">/3 months</span>
+        </div>
+        <div class="pricing-price tier-price" data-period="lifetime">
+          <span class="price-amount">$24.99</span>
+          <span class="price-period">lifetime</span>
         </div>
         <div class="pricing-divider"></div>
         <ul class="pricing-features">
-          <li><span class="check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Everything in Premium</li>
-          <li><span class="check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Custom bot branding &amp; status</li>
-          <li><span class="check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>REST API access</li>
-          <li><span class="check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Multi-server license</li>
-          <li><span class="check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Dedicated account manager</li>
-          <li><span class="check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>SLA uptime guarantee (99.9%)</li>
-          <li><span class="check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>24/7 premium support</li>
+          <li><span class="check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Everything in Pro</li>
+          <li><span class="check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>User and server stats</li>
+          <li><span class="check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Premium on up to 6 servers</li>
+          <li><span class="check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>No-prefix commands</li>
         </ul>
-        <a href="mailto:enterprise@dracon.bot" class="btn btn-ghost" style="text-align:center;justify-content:center">Contact us</a>
+        <a href="/support.html" class="btn btn-ghost" style="text-align:center;justify-content:center">Pre-buy Ultimate</a>
       </div>
 
     </div>
 
     <!-- Feature comparison table -->
-    <div class="premium-compare fade-in" style="margin-top:80px">
+    <div class="premium-compare fade-in" style="margin-top:72px">
+      <h2 style="font-size:1.5rem;font-weight:700;margin-bottom:28px">Compare plans</h2>
       <table class="compare-table">
         <thead>
           <tr>
             <th style="width:40%">Feature</th>
-            <th>Free</th>
-            <th class="featured-col">Premium</th>
-            <th>Business</th>
+            <th>Basic</th>
+            <th class="featured-col">Pro</th>
+            <th>Ultimate</th>
           </tr>
         </thead>
         <tbody>
-          <tr><td>Basic moderation</td><td class="check-yes">✓</td><td class="check-yes">✓</td><td class="check-yes">✓</td></tr>
-          <tr><td>Welcome messages</td><td class="check-yes">✓</td><td class="check-yes">✓</td><td class="check-yes">✓</td></tr>
-          <tr><td>Reaction roles</td><td>Up to 5</td><td class="check-yes">Unlimited</td><td class="check-yes">Unlimited</td></tr>
-          <tr><td>Ticket panels</td><td>1</td><td class="check-yes">Unlimited</td><td class="check-yes">Unlimited</td></tr>
-          <tr><td>Antinuke</td><td class="check-no">–</td><td class="check-yes">✓</td><td class="check-yes">✓</td></tr>
-          <tr><td>Automod</td><td class="check-no">–</td><td class="check-yes">✓</td><td class="check-yes">✓</td></tr>
-          <tr><td>Anti-raid</td><td class="check-no">–</td><td class="check-yes">✓</td><td class="check-yes">✓</td></tr>
-          <tr><td>Verification system</td><td class="check-no">–</td><td class="check-yes">✓</td><td class="check-yes">✓</td></tr>
-          <tr><td>Custom branding</td><td class="check-no">–</td><td class="check-no">–</td><td class="check-yes">✓</td></tr>
-          <tr><td>API access</td><td class="check-no">–</td><td class="check-no">–</td><td class="check-yes">✓</td></tr>
-          <tr><td>Support</td><td>Community</td><td class="check-yes">Priority (24h)</td><td class="check-yes">24/7 dedicated</td></tr>
+          <tr><td>Invite tracker &amp; message counter</td><td class="check-yes">✓</td><td class="check-yes">✓</td><td class="check-yes">✓</td></tr>
+          <tr><td>No-prefix commands</td><td class="check-yes">✓</td><td class="check-yes">✓</td><td class="check-yes">✓</td></tr>
+          <tr><td>Logging &amp; AutoRoles</td><td class="check-no">–</td><td class="check-yes">✓</td><td class="check-yes">✓</td></tr>
+          <tr><td>User &amp; server stats</td><td class="check-no">–</td><td class="check-no">–</td><td class="check-yes">✓</td></tr>
+          <tr><td>Servers covered</td><td>2</td><td class="check-yes">4</td><td class="check-yes">6</td></tr>
         </tbody>
       </table>
     </div>
@@ -141,5 +275,14 @@
 </footer>
 
 <script src="/script.js"></script>
+<script>
+  function setBilling(period, btn) {
+    document.querySelectorAll('.billing-toggle button').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.tier-price').forEach(el => {
+      el.classList.toggle('active', el.dataset.period === period);
+    });
+  }
+</script>
 </body>
 </html>
